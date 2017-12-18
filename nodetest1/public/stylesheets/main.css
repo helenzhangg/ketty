@@ -652,6 +652,6 @@ p.note{
     font-size: 1.2em;
 }
 
-/*#titlepanel{*/
-    /*position: fixed;*/
-/*}*/
+input.hide{
+    display: none;
+}
