@@ -1,0 +1,104 @@
+extends layout
+
+doctype html
+html
+  head
+
+  body
+    block content
+      -var lead_companies = leads.length + " companies";
+      -var pitch_companies = pitches.length + " companies";
+      - console.log(lead_companies);
+      - var lead_total = 0;
+      -console.log('LEADSSSS BELOW');
+      -console.log(leads);
+      - for (i=0;i< leads.length;i++){
+      - lead_total+=Number(leads[i].sponsorship_amount);
+      -
+      -console.log(lead_total);}
+      -lead_total = '$' + lead_total;
+      .row
+        .col.s12.m3#titlepanel
+          .card.shadow.teal.lighten-5
+            .card-content.black-text
+              span.card-title.title Welcome back
+              span.card-title.title SheHacks Boston!
+              hr
+              img#woku(src='/images/shehackslogo.png', alt='' style="max-width:80%")
+              h2 RAISED
+              h3 $85,350
+              hr
+              h2 REMAINING
+              h4 $14,650
+              h2 TARGET
+              h4 $100,000
+              button.button#search(type='submit' name= 'done' style="background:#ff6d00")
+                span Documents
+        div#location
+          .col.s12.m2
+            .card.shadow.teal.lighten-5
+              .card-content.black-text
+                button.button#search(type='submit' name= 'done' style="background:#ff6d00")
+                  span Lead
+                hr
+                p=lead_total
+                p=lead_companies
+
+
+        div#budgets
+          .col.s12.m2
+            .card.shadow.teal.lighten-5
+              .card-content.black-text
+                button.button#search(type='submit' name= 'done')
+                  span Pitch
+                hr
+                p $12,450
+                p=pitch_companies
+
+
+
+        .col.s12.m2
+          .card.shadow.teal.lighten-5
+            .card-content.black-text
+              button.button#search(type='submit' name= 'done')
+                span Follow-Up
+              hr
+              p $16,000
+              p 6 Companies
+
+
+        .col.s12.m2
+          .card.shadow.teal.lighten-5#submitcard
+            .card-content.black-text
+              button.button#search(type='submit' name= 'done')
+                span Signed
+              hr
+              p $85,350
+              p 19 Companies
+
+        .col.s10.offset-s3.companies
+          ul
+            each result, index in leads
+              li
+                .card.teal.lighten-5.offset-s4.company
+                  a.btn-floating.halfway-fab.waves-effect.waves-light.orange.accent-4
+                    i.material-icons create
+                  h1.companylabel company
+                    span.companyamount sponsorship tier
+                    span.assignlabel assigned to
+                    br
+                    span.amount=result.sponsorship_level
+                    span.member=result.assigned_to
+                  h1.companyname=result.company
+                    span.deadline=result.contactBy
+                  h1.contact=result.email
+                  hr
+                  h1.companylabel Notes
+                  p.note=result.notes
+
+
+
+
+
+
+
